@@ -1,0 +1,17 @@
+.git
+.gitignore
+.idea
+.vscode
+
+**/target
+**/.mvn
+**/.DS_Store
+**/*.log
+
+.m2
+.gradle
+node_modules
+
+README.md
+docs
+agent-transcripts

@@ -1,0 +1,267 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f1117;
+  color: #e1e4e8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+header h1 { font-size: 1.1rem; font-weight: 600; color: #58a6ff; }
+header .tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #1f3a4d;
+  color: #58a6ff;
+  border: 1px solid #0d419d;
+}
+.sse-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #6e7681;
+  transition: background 0.3s;
+}
+.sse-dot.connected { background: #3fb950; box-shadow: 0 0 6px #3fb950; }
+.sse-dot.error     { background: #f85149; }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 0;
+  flex: 1;
+}
+
+/* ---- Left panel ---- */
+.left-panel { padding: 24px; overflow-y: auto; }
+
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b949e;
+  margin-bottom: 14px;
+}
+
+.user-bar {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-bar label { font-size: 0.85rem; color: #8b949e; white-space: nowrap; }
+.user-bar select {
+  flex: 1;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e1e4e8;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.user-bar select:focus { outline: none; border-color: #58a6ff; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.product-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s;
+}
+.product-card:hover { border-color: #58a6ff44; }
+
+.product-name  { font-size: 1rem; font-weight: 600; }
+.product-price { font-size: 1.4rem; font-weight: 700; color: #58a6ff; }
+.product-stock { font-size: 0.75rem; color: #8b949e; }
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qty-row label { font-size: 0.8rem; color: #8b949e; }
+.qty-input {
+  width: 64px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e1e4e8;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.qty-input:focus { outline: none; border-color: #58a6ff; }
+
+.order-btn {
+  margin-top: auto;
+  background: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.order-btn:hover:not(:disabled) { background: #2ea043; }
+.order-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.flash {
+  font-size: 0.75rem;
+  text-align: center;
+  height: 18px;
+}
+.flash.ok  { color: #3fb950; }
+.flash.err { color: #f85149; }
+
+.empty-state {
+  color: #8b949e;
+  font-size: 0.9rem;
+  padding: 32px 0;
+  text-align: center;
+}
+
+/* ---- Right panel (notifications) ---- */
+.right-panel {
+  border-left: 1px solid #30363d;
+  background: #0d1117;
+  display: flex;
+  flex-direction: column;
+}
+.right-panel-header {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.right-panel-header span { font-size: 0.85rem; font-weight: 600; }
+.clear-btn {
+  background: none;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  color: #8b949e;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.clear-btn:hover { border-color: #8b949e; color: #e1e4e8; }
+
+#notifications {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notif-placeholder {
+  color: #8b949e;
+  font-size: 0.82rem;
+  text-align: center;
+  margin: auto;
+}
+
+.notif-item {
+  background: #161b22;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border-left: 3px solid #58a6ff;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.notif-item.success  { border-color: #3fb950; }
+.notif-item.failed   { border-color: #f85149; }
+.notif-item.cancelled { border-color: #d29922; }
+
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.notif-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+.notif-badge.success  { background: #1a3a24; color: #3fb950; }
+.notif-badge.failed   { background: #3a1a1a; color: #f85149; }
+.notif-badge.cancelled{ background: #3a2e00; color: #d29922; }
+
+.notif-time { color: #8b949e; font-size: 0.7rem; }
+.notif-body { color: #c9d1d9; }
+.notif-body strong { color: #e1e4e8; }
+
+/* ---- Order history ---- */
+.order-history { margin-top: 32px; }
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-row {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+.order-row-info { flex: 1; color: #c9d1d9; line-height: 1.5; }
+.order-row-info strong { color: #e1e4e8; }
+.order-row-meta { color: #8b949e; font-size: 0.7rem; white-space: nowrap; }
+
+.order-status-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.order-status-badge.pending   { background: #1c2128; color: #8b949e; border: 1px solid #30363d; }
+.order-status-badge.paid      { background: #1a3a24; color: #3fb950; }
+.order-status-badge.failed    { background: #3a1a1a; color: #f85149; }
+.order-status-badge.cancelled { background: #3a2e00; color: #d29922; }

@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.12</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.cyboul.eda</groupId>
+    <artifactId>event-driven-microservices</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api-gateway</module>
+        <module>user-service</module>
+        <module>product-service</module>
+        <module>order-service</module>
+        <module>payment-service</module>
+        <module>common-lib</module>
+        <module>notif-service</module>
+    </modules>
+
+    <properties>
+        <java.version>21</java.version>
+        <spring.gateway.version>4.3.3</spring.gateway.version>
+    </properties>
+
+</project>

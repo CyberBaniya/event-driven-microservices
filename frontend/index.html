@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDA Shop Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>EDA Shop Demo</h1>
+  <span class="tag">event-driven</span>
+  <div class="sse-status">
+    <div class="sse-dot" id="sseDot"></div>
+    <span id="sseLabel">Connecting…</span>
+  </div>
+</header>
+
+<main>
+  <div class="left-panel">
+    <div class="section-title">Active User</div>
+    <div class="user-bar">
+      <label for="userSelect">Order as:</label>
+      <select id="userSelect">
+        <option value="">— loading users —</option>
+      </select>
+    </div>
+
+    <div class="section-title">Products</div>
+    <div class="product-grid" id="productGrid">
+      <p class="empty-state">Loading products…</p>
+    </div>
+
+    <div class="order-history">
+      <div class="section-title">Order History</div>
+      <div class="order-list" id="orderList">
+        <p class="empty-state" id="orderPlaceholder">Select a user to see their orders.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="right-panel-header">
+      <span>Live Notifications</span>
+      <button class="clear-btn" onclick="clearNotifs()">Clear</button>
+    </div>
+    <div id="notifications">
+      <p class="notif-placeholder">Waiting for events…</p>
+    </div>
+  </div>
+</main>
+
+<script src="js/util.js"></script>
+<script src="js/state.js"></script>
+<script src="js/users.js"></script>
+<script src="js/products.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/sse.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
